@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anmeldung und Dashboard</title>
+    <style>
+        /* Basis-Styling für das Formular */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Login-Bereich */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 220px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Dashboard-Bereich */
+        .dashboard-container {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile {
+            margin: 20px;
+        }
+
+        .profile span {
+            font-weight: bold;
+        }
+
+        /* Roter Kreis für Owner */
+        .owner {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            margin-left: 10px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            background-color: #007bff;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login-Formular -->
+    <div class="login-container" id="login-container">
+        <div>
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Benutzername" />
+            <input type="password" id="password" placeholder="Passwort" />
+            <button onclick="login()">Anmelden</button>
+        </div>
+    </div>
+
+    <!-- Dashboard nach erfolgreichem Login -->
+    <div class="dashboard-container" id="dashboard-container">
+        <h2>Hallo, <span id="welcome"></span>!</h2>
+        
+        <div class="profile">
+            Teamler: <span id="teamler-name">Liam</span> <span class="owner">Owner</span>
+        </div>
+        
+        <div class="button-container">
+            <button onclick="openDiscord()">Discord starten</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript-Login-Überprüfung
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Hier die Benutzerdaten und Passwörter einstellen
+            if (username === "liam" && password === "1515") {
+                // Anmeldeerfolgt, zeige Dashboard an
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("dashboard-container").style.display = "block";
+                document.getElementById("welcome").innerText = "Liam"; // Benutzername
+                document.getElementById("teamler-name").innerText = "Liam"; // Teamler Name
+            } else {
+                alert("Falscher Benutzername oder Passwort.");
+            }
+        }
+
+        // Discord starten (dies öffnet Discord im Browser)
+        function openDiscord() {
+            window.open("https://discord.com/app", "_blank");
+        }
+    </script>
+
+</body>
+</html>
